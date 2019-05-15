@@ -186,37 +186,31 @@ class DropdownForm extends FormBase {
 
     ];
     /* Fetch the array of the file stored temporarily in database */
-    $image = $form_state->getValue('dropzonejs');
-    kint($image);
-    die();
-    $file = \Drupal::entityTypeManager()->getStorage('file')
-      ->load($form_state->getValue('dropzonejs')['uploaded_files'][0]); // Just FYI. The file id will be
-    kint($file);
-    die();
+    $image = $form_state->getValues();
     $image = $image['dropzonejs']['uploaded_files'][0];
-//    kint($image);
-//    die();
-//    /* Load the object of the file by it's fid */
-//    $file = File::load( $image );
-//
-//    /* Set the status flag permanent of the file object */
-//    $file->setPermanent();
-//
-//    /* Save the file in database */
-//    $file->save();
-//
-//    kint($form_state->getValues());
-//    die();
+
+    /* Load the object of the file by it's fid */
+    $file = File::load( $image['dropzonejs']['uploaded_files'][0] );
+
+    /* Set the status flag permanent of the file object */
+    $file->setPermanent();
+
+    /* Save the file in database */
+    $file->save();
+
+    kint($form_state->getValues());
+    die();
     $connection = \Drupal::database();
-    if($image) {
-      $some_location = '/sites/img/';
-      $des = $some_location . '-' . time() . $image->filename; // Define the new location and add the time stamp to file name.
-      $result = file_copy($image, $des, FILE_EXISTS_REPLACE);
+    if($newfile) {
+      $some_location = '/some/location/at/server';
+      $des = $some_location . '-' . time() . $newfile->filename; // Define the new location and add the time stamp to file name.
+
+      $result = file_copy($newfile, $des, FILE_EXISTS_REPLACE);
       if ($result) {
-        var_dump('success');
+        // Succeed.
       }
       else {
-        var_dump('failed');
+        // Fail.
       }
 
     }
