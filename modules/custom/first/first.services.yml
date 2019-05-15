@@ -1,0 +1,5 @@
+services:
+  first.route_subscriber:
+    class: Drupal\first\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

@@ -1,0 +1,21 @@
+name: multi_pro
+description: 'Multi Pro Theme'
+core: 8.x
+type: theme
+
+libraries:
+  - multi_pro/global-styling
+  - multi_pro/global-scripts
+
+regions:
+  header: Header
+  content: Content
+  main_menu: 'Main Menu'
+  test: 'Test'
+  who_we_are: 'Who We Are'
+  sidebar_first: 'Sidebar first'
+  teams: 'teams'
+  sections: 'sections'
+  newsletter: 'newsletter'
+  login: 'login'
+  footer: Footer

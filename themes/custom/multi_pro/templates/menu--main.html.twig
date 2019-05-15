@@ -1,0 +1,115 @@
+{#<div id="menu_area" class="menu-area">#}
+{#  <div class="container">#}
+{#    <div class="row">#}
+{#      <nav class="navbar navbar-light navbar-expand-lg mainmenu">#}
+{#        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">#}
+{#          <span class="navbar-toggler-icon"></span>#}
+{#        </button>#}
+{#        <div class="collapse navbar-collapse" id="navbarSupportedContent">#}
+{#          <ul class="navbar-nav mr-auto list-unstyled">#}
+{#            {% import _self as menus %}#}
+{#              {{ menus.menu_links(items, attributes, 0) }}#}
+
+{#            {% macro menu_links(items, attributes, menu_level) %}#}
+{#              {% import _self as menus %}#}
+{#              {% if items %}#}
+
+
+
+{#                {% for item in items %}#}
+{#                  {%#}
+{#                      set classes = [#}
+{#                      'item',#}
+{#                      item.in_active_trail ? 'active'#}
+{#                    ]#}
+{#                    %}#}
+{#                  {{ kint(item.below) }}#}
+{#                  {% if item.menu_level == 0 %}#}
+{#                    <li class="dropdown">#}
+{#                      <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ item.title }}</a>#}
+{#                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">#}
+{#                        <li><a href="#">Action</a></li>#}
+{#                        <li><a href="#">Another action</a></li>#}
+{#                        <li><a href="#">Something else here</a></li>#}
+{#                      </ul>#}
+{#                    </li>#}
+{#                  {% else %}#}
+{#                    <li {{ item.attributes.addClass(classes) }}><a href="{{ item.url }}" >{{ item.title }} {{ item.is_collasped }}</a></li>#}
+{#                  {% endif %}#}
+
+{#                  {% if item.below %}#}
+{#                  {{ menus.menu_links(item.below, attributes, menu_level + 1) }}#}
+{#                  {% endif %}#}
+
+{#                  {% endfor %}#}
+{#                {% endif %}#}
+{#                {% endmacro %}#}
+{#            {% set items = simplify_menu('main') %}#}
+{#            {% for menu_item in items.menu_tree %}#}
+{#            {% set is_dropdown =  menu_item.submenu %}#}
+
+{#              <li class="{% if is_dropdown %} dropdown {% endif %} {% if menu_item.in_active_trail %} active {% endif %} ">#}
+{#                <a {% if is_dropdown %} class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {% else %} href="{{ menu_item.url }}" {% endif %}>{{ menu_item.text }}</a>#}
+{#                {% if is_dropdown %}#}
+{#                  <ul class="dropdown-menu list-unstyled"  aria-labelledby="navbarDropdown">#}
+{#                    {% for sub_menu_item in menu_item.submenu %}#}
+{#                      <li class="{% if sub_menu_item.submenu %} dropdown {% endif %} {% if menu_item.in_active_trail %} active {% endif %} ">#}
+{#                        <a href="{{ sub_menu_item.url }}">{{ sub_menu_item.text }}</a>#}
+{#                        {% if sub_menu_item.submenu %}#}
+{#                          <ul class="dropdown-menu list-unstyled"  aria-labelledby="navbarDropdown">#}
+{#                            {% for sub_menu_item in sub_menu_item.submenu %}#}
+{#                              <li>#}
+{#                                <a href="{{ sub_menu_item.url }}">{{ sub_menu_item.text }}</a>#}
+{#                              </li>#}
+{#                            {% endfor %}#}
+{#                          </ul>#}
+{#                        {% endif %}#}
+{#                      </li>#}
+{#                    {% endfor %}#}
+{#                  </ul>#}
+{#                {% endif %}#}
+{#              </li>#}
+{#            {% endfor %}#}
+{#          </ul>#}
+{#        </div>#}
+{#      </nav>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
+<ul class="nav">
+  {% set items = simplify_menu('main') %}
+  {% for menu_item in items.menu_tree %}
+  {% set is_dropdown =  menu_item.submenu %}
+  <li class="{% if is_dropdown %} drop {% endif %}">
+    <a href="{% if is_dropdown %} # {% else %} {{ menu_item.url }} {% endif %}" class="btn-ripple active">{{ menu_item.text }}</a>
+    {% if is_dropdown %}
+    {% for sub_item in menu_item.submenu %}
+    <ul class="drop-menu">
+      {% if sub_item.submenu %}
+
+      <li class="drop">
+        <a href="{{ sub_item.url }}">{{ sub_item.text }}</a>
+        {% for sub_sub_item in sub_item.submenu %}
+          <ul class="drop-menu">
+            <li>
+              <a href="{{ sub_sub_item.url }}">{{ sub_sub_item.text }}</a>
+            </li>
+          </ul>
+        {% endfor %}
+        {% endif %}
+      </li>
+    </ul>
+    {% endfor %}
+    {% endif %}
+  </li>
+  {% endfor %}
+  <li class="drop">
+    <a href="#" class="btn-ripple">Dropmenu2</a>
+    <ul class="drop-menu">
+      <li><a href="#">Art</a></li>
+      <li><a href="">Coding</a></li>
+      <li><a href="">Design</a></li>
+      <li><a href="">Web Development</a></li>
+    </ul>
+  </li>
+</ul>

@@ -1,0 +1,24 @@
+<!-- end main content -->
+<footer class="text-center">
+    <p class="small copyright-text">Copyright &copy; 2084 Company Name</p>
+</footer>
+<js-bottom-placeholder token="{{ placeholder_token|raw }}">
+
+<!-- JS -->
+<script>
+  (function($) {
+    $(document).ready(function ($) {
+      $('.crsl-items').carousel({
+        visible: 1,
+        itemMinWidth: 320,
+        itemEqualHeight: 320,
+        itemMargin: 9,
+      });
+      $(".crsl-nav a[href=#]").on('click', function (e) {
+
+        e.preventDefault();
+      });
+    });
+  })(jQuery);
+
+</script>

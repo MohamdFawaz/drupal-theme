@@ -1,0 +1,17 @@
+#libraries file
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      css/landing-page.min.css: {}
+      css/simple-line-icons.css: {}
+      css/bootstrap.min.css: {}
+
+global-scripts:
+  version: 1.x
+  js:
+#    js/jquery.min.js : {}
+    js/bootstrap.bundle.min.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

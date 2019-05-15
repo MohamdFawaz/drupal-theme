@@ -1,0 +1,18 @@
+global-styling:
+  css:
+    theme:
+      css/bootstrap.min.css: {}
+      css/font-awesome.min.css: {}
+      css/responsive-carousel.css: {}
+      css/templatemo-style.css: {}
+
+global-scripts:
+  version: 1.x
+  js:
+#    js/jquery.min.js : {}
+    js/isotope.pkgd.min.js: {}
+    js/responsiveCarousel.min.js: {}
+    js/templatemo-script.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

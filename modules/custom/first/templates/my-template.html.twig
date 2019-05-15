@@ -1,0 +1,36 @@
+<p> twig template!</p>
+{{ form }}
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>name</th>
+        <th>surname</th>
+        <th>age</th>
+        <th>action</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for item in data %}
+            <tr>
+                <td> {{ item.pid }} </td>
+                <td> {{ item.name }} </td>
+                <td> {{ item.surname }} </td>
+                <td> {{ item.age }} </td>
+                <td>
+                    <a style="color: darkred" href="{{  path('first.delete', {'id':item.pid}) }}">delete</a>
+                    <a style="color: darkred" href="{{  path('first.edit', {'id':item.pid}) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<ol class='example'>
+    <li>First</li>
+    <li>Second</li>
+    <li>Third</li>
+</ol>
+<script>
+    console.log('test');
+</script>
+

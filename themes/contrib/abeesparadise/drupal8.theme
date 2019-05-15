@@ -1,0 +1,69 @@
+<?php
+
+use Drupal\block\Entity\Block;
+use Drupal\Component\Utility\Html;
+
+/**
+ * @file
+ * Functions to support theming in the aBeesParadies theme.
+ */
+function drupal8_preprocess_html(array &$variables) {
+  if ($variables['html_attributes']['dir'] == 'rtl') {
+    $variables['#attached']['library'][] = 'drupal8/rtl_styles';
+  }
+
+  /** Add class to body tag based on node type */
+  $variables['path_info']['args'] = FALSE;
+  $path = \Drupal::request()->getPathInfo();
+  $path_args = explode('/', $path);
+  if (count($path_args) >= 3) {
+    $variables['path_info']['args'] = Html::cleanCssIdentifier(ltrim($path, '/'));
+  }
+
+  /**
+  * Sets body tag class-attributes.
+  * Adds 'sidebar-left', 'sidebar-right' or 'sidebars' classes as needed.
+  */
+  if(!empty($variables['page']['left_sidebar']) && !empty($variables['page']['right_sidebar'])) {
+    $variables['attributes']['class'][] = 'sidebars';
+  }
+  else {
+    if(!empty($variables['page']['left_sidebar'])) {
+      $variables['attributes']['class'][] = 'sidebar-left';
+    }
+    if(!empty($variables['page']['right_sidebar'])) {
+      $variables['attributes']['class'][] = 'sidebar-right';
+    }
+  }
+}
+
+function drupal8_preprocess_page(array &$variables) {
+  // Load the site name out of configuration
+  $config = \Drupal::config('system.site');
+  $variables['site_name'] = $config->get('name');
+  $variables['site_slogan'] = $config->get('slogan');
+
+  // Getting primary links to display on footer
+  $menu = \Drupal\block\Entity\Block::load('drupal8_main_menu');
+  $variables['main_menu'] = \Drupal::entityTypeManager()
+    ->getViewBuilder('block')
+    ->view($menu);
+}
+
+function drupal8_preprocess_node(array &$variables) {
+  $variables['node'] = $variables['elements']['#node'];
+  $node = $variables['node'];
+
+  if ($node->isSticky()) {
+    $variables['attributes']['class'][] = 'sticky';
+  }
+  if (!$node->isPublished()) {
+    $variables['attributes']['class'][] = 'node-unpublished';
+  }
+}
+
+function drupal8_preprocess_breadcrumb(&$variables) {
+  if(!empty($variables['breadcrumb'])) {
+    return '<div class="breadcrumb">'. implode(' &raquo; ', $variables['breadcrumb']) .'</div>';
+  }
+}

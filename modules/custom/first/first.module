@@ -1,0 +1,17 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+function first_theme($existing, $type, $theme, $path)
+{
+    return [
+        'my_template' => [
+            'variables' => ['data' => [], 'form'=>''],
+        ],
+        'edit_form' => [
+            'variables' => ['form'=>''],
+        ],'show' => [
+            'variables' => ['data'=>'','form' => ''],
+        ]
+    ];
+}

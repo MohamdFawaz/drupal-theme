@@ -1,0 +1,24 @@
+name: aBeesParadise Drupal 8 theme.
+type: theme
+description: Drupal 8 version of aBeesParadise theme.
+package: wembassy
+# core: 8.x
+libraries:
+  - drupal8/global-styling
+  - drupal8/global-scripts
+
+base theme: bootstrap
+
+regions:
+  header: 'Header'
+  content: 'Content'
+  left_sidebar: 'Left Sidebar'
+  right_sidebar: 'Right Sidebar'
+  footer: 'Footer'
+  breadcrumb: 'Breadcrumb'
+
+# Information added by Drupal.org packaging script on 2018-10-06
+version: '8.x-1.3'
+core: '8.x'
+project: 'abeesparadise'
+datestamp: 1538808487

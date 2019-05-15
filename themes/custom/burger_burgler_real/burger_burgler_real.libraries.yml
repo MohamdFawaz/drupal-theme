@@ -1,0 +1,20 @@
+global-styling:
+  css:
+    theme:
+      css/semantic/reset.css: {}
+      css/semantic/site.css: {}
+      css/semantic/icon.css: {}
+      css/semantic/container.css: {}
+      css/semantic/grid.css: {}
+      css/semantic/header.css: {}
+      css/semantic/menu.css: {}
+      css/semantic/segment.css: {}
+      css/semantic/button.css: {}
+      css/semantic/list.css: {}
+      css/custom_semantic.css: {}
+      css/custom-grid.css: {}
+global-script:
+  js:
+#    libraries/jquery-3.4.0.js: {}
+    libraries/jquery-sortable.js: {}
+    libraries/example-grid.js: {}

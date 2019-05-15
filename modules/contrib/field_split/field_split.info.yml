@@ -1,0 +1,11 @@
+name: Field Split
+type: module
+description: My Awesome Module
+# core: 8.x
+package: Fields
+
+# Information added by Drupal.org packaging script on 2015-02-17
+version: '8.x-1.x-dev'
+core: '8.x'
+project: 'field_split'
+datestamp: 1424189839

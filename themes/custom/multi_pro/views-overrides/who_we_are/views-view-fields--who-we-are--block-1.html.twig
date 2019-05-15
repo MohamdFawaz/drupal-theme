@@ -1,0 +1,75 @@
+{#
+/**
+ * @file
+ * Default view template to display all the fields in a row.
+ *
+ * Available variables:
+ * - view: The view in use.
+ * - fields: A list of fields, each one contains:
+ *   - content: The output of the field.
+ *   - raw: The raw data for the field, if it exists. This is NOT output safe.
+ *   - class: The safe class ID to use.
+ *   - handler: The Views field handler controlling this field.
+ *   - inline: Whether or not the field should be inline.
+ *   - wrapper_element: An HTML element for a wrapper.
+ *   - wrapper_attributes: List of attributes for wrapper element.
+ *   - separator: An optional separator that may appear before a field.
+ *   - label: The field's label text.
+ *   - label_element: An HTML element for a label wrapper.
+ *   - label_attributes: List of attributes for label wrapper.
+ *   - label_suffix: Colon after the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ *   - has_label_colon: A boolean indicating whether to display a colon after
+ *     the label.
+ *   - element_type: An HTML element for the field content.
+ *   - element_attributes: List of attributes for HTML element for field content.
+ * - row: The raw result from the query, with all data it fetched.
+ *
+ * @see template_preprocess_views_view_fields()
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+<div class="row section-title-container">
+  <div class="col-lg-12 text-uppercase text-center">
+    <h2 class="section-title">{{ fields.title.content }}</h2>
+    <div class="section-title-underline-blue"></div>
+    <hr class="section-title-underline">
+  </div>
+</div> <!-- row -->
+<div class="row">
+  <div class="col-lg-5 col-md-5">
+    <div class="tm-blocks-container effect1">
+      {% set titles = fields.field_slogan.content|split(',') %}
+      {% set images = fields.field_images.content|split(',') %}
+      <div class="tm-block green-bg">
+        <a href="{{ images[0] }}" target="_blank" class="tm-block-link">{{ titles[0] }}</a>
+      </div>
+      <div class="tm-block">
+        <img src="{{ images[0] }}" alt="Image" class="img-responsive">
+      </div>
+      <div class="tm-block">
+        <img src="{{ images[1] }}" alt="Image" class="img-responsive">
+      </div>
+      <div class="tm-block red-bg">
+        <a href="{{ images[1] }}" target="_blank" class="tm-block-link">{{ titles[1] }}</a>
+      </div>
+      <div class="tm-block yellow-bg">
+        <a href="{{ images[2] }}" target="_blank" class="tm-block-link">{{ titles[2] }}</a>
+      </div>
+      <div class="tm-block">
+        <img src="{{ images[2] }}" alt="Image" class="img-responsive">
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-7 col-md-7">
+    <h3 class="section-title-2 text-uppercase font-weight-300"><span class="blue-text"{{ fields.field_phrase.content }}
+</span></h3>
+    <p class="justify-text">
+      {{ fields.body.content }}
+    </p>
+  </div>
+</div>

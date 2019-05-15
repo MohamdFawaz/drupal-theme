@@ -1,0 +1,286 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/**
+* Global style adjustments
+*/
+#squeeze {
+  line-height: 1.5;
+  padding-top: 10px;
+}
+
+.Textcontiner2 > section {
+  margin-top: 20px;
+}
+.Textcontiner2 > section > h2 {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.Midalcontiner {
+  min-height: 75vh;
+}
+
+ul.links.inline.list-inline {
+  margin: 5px 0;
+}
+
+/**
+* Header
+*/
+.container {
+  display: inline-block;
+  cursor: pointer;
+}
+.container.change {
+  position: fixed;
+  right: 0;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #D789BA;
+  margin: 6px 0;
+  transition: 0.4s;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+.change .bar2 {
+  opacity: 0;
+}
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+#mobile-menu {
+  position: fixed;
+  background: white;
+  height: 0;
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+  width: 100%;
+  left: 0;
+  top: 0;
+  margin: auto;
+  overflow: hidden;
+  z-index: 2;
+}
+#mobile-menu.change {
+  padding: 50px 10px;
+  height: 100%;
+  max-height: 100%;
+  transition: max-height 0.25s ease-in;
+  clear: both;
+  background-image: url(../images/bg_header.jpg);
+  background-repeat: no-repeat;
+  background-position: -34px top;
+}
+#mobile-menu.change .Logowraper {
+  padding: 15px 10px;
+}
+#mobile-menu.change ul.primary-links {
+  display: block;
+  width: 100%;
+}
+#mobile-menu.change ul.primary-links li {
+  display: block;
+  clear: both;
+  width: 100%;
+  float: none;
+  border: transparent;
+  padding: 10px;
+  font-size: 16px;
+  border-bottom: #AFCCD0 1px solid;
+}
+
+/*** Mobile Styles
+*
+*/
+@media (max-width: 767px) {
+  body {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+  body #squeeze {
+    margin-right: 0 !important;
+    padding-bottom: 150px;
+  }
+
+  .Maincontiner {
+    width: 95%;
+    position: relative;
+  }
+
+  .Headerwraper,
+  .Rightlinkswraper,
+  .Midalwraper,
+  .Midalcontiner,
+  .Midalcontiner1,
+  .Footerwraper,
+  .footer-content,
+  .Footerbottomlinks,
+  .Interface {
+    width: 100%;
+  }
+
+  .Footerwraper {
+    padding: 10px;
+  }
+
+  /** Header section */
+  .Headerwraper {
+    background-position: -34px 0;
+  }
+
+  /* Header Menu */
+  .Rightlinkswraper {
+    padding-right: 10px;
+  }
+  .Rightlinkswraper .desktop {
+    display: none;
+  }
+  .Rightlinkswraper .mobile {
+    text-align: right;
+    padding-top: 30px;
+    z-index: 3;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .Midalwraper {
+    background-position: center;
+  }
+  .Midalwraper #center {
+    line-height: 1.5;
+  }
+
+  .Logowraper {
+    padding-left: 20px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding-top: 35px;
+  }
+
+  /** Article nodes */
+  .Thesun {
+    margin-left: 20px;
+  }
+
+  body.path-node .Thesun {
+    margin-left: 0;
+  }
+
+  /** Footer styles */
+  .Footerrightcontiner, .Footerleftcontiner {
+    width: 5%;
+  }
+
+  .Footermidalcontiner {
+    width: 90%;
+  }
+
+  /** Hide Sidebars for Mobile **/
+  #sidebar-left, #sidebar-right {
+    display: none;
+  }
+}
+/**
+* Add fonts
+*/
+@font-face {
+  font-family: "Trebuchet MS";
+  src: url("fonts/Trebuchet MS.ttf") format("truetype");
+}
+img {
+  width: 100%;
+}
+
+html body {
+  font-family: "Trebuchet MS";
+}
+
+/** Drupal Editor */
+div[data-drupal-selector="edit-actions"] {
+  clear: both;
+  display: inline-block;
+  width: 100%;
+  margin: 10px 0;
+}
+div[data-drupal-selector="edit-actions"] > button {
+  display: inline-block;
+  float: left;
+  margin: 0;
+  margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+  .Rightlinkswraper .mobile, .Rightlinkswraper .mobile-menu {
+    display: none;
+  }
+}

@@ -1,0 +1,27 @@
+<?php
+function fluffiness_preprocess_html(&$variables) {
+
+    $xuacompatible = [
+        '#tag' => 'meta',
+        '#attributes' => [
+            'http-equiv' => 'x-ua-compatible',
+            'content' => 'ie=edge',
+        ],
+        '#tag'=>'link',
+        '#attributes' => [
+            'href' => 'https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic',
+            'rel' => 'stylesheet',
+            'type' => 'text/css',
+        ],
+
+    ];
+
+
+    $variables['page']['#attached']['html_head'][] = [$xuacompatible, 'x-ua-compatible'];
+}
+
+function fluffiness_suggestions_page_alter(array &$suggestions, array $variables) {
+    if ($node = \Drupal::routeMatch()->getParameter('node')) {
+        $suggestions[] = 'page__' . $node->bundle();
+    }
+}

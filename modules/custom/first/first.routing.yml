@@ -1,0 +1,57 @@
+first.content:
+  path: '/first'
+  defaults:
+    _controller: '\Drupal\first\Controller\FirstController::content'
+    _title: 'First'
+  requirements:
+    _permission: 'sample permission 1'
+
+first.hello_form:
+  path: '/first/hello_form'
+  defaults:
+    _form: 'Drupal\first\Form\HelloForm'
+    _title: 'Simple custom form example'
+  requirements:
+    _permission: 'sample permission 2'
+
+
+first.edit_hello_form:
+  path: '/first/edit_hello_form/{id}'
+  defaults:
+    _form: 'Drupal\first\Form\EditHelloForm'
+    _title: 'Simple custom form example'
+  requirements:
+    _permission: 'sample permission 2'
+
+first.drop_form:
+  path: '/first/drop_form'
+  defaults:
+    _controller: '\Drupal\first\Controller\FirstController::test'
+    _title: 'Dropdown Form'
+  requirements:
+    _permission: 'access content'
+
+first.delete:
+  path: '/first/delete/{id}'
+  defaults:
+    _controller: '\Drupal\first\Controller\FirstController::delete'
+    _title: 'delete'
+  requirements:
+    _permission: 'sample permission 2'
+
+first.edit:
+  path: '/first/edit/{id}'
+  defaults:
+    _controller: '\Drupal\first\Controller\FirstController::edit'
+    _title: 'edit'
+  requirements:
+    _permission: 'sample permission 2'
+
+
+first.test:
+  path: '/test'
+  defaults:
+    _controller: '\Drupal\first\Controller\FirstController::test'
+    _title: 'test'
+  requirements:
+    _permission: 'access content'

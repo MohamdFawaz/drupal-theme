@@ -1,0 +1,22 @@
+global-styling:
+  version: 1.0
+  css:
+    theme:
+      stylesheets/css/style1.css: {}
+      stylesheets/screen.css: {} # mobile and tablet styles
+      stylesheets/css/print.css: { media: print }
+      stylesheets/css/fix-ie.css: { browsers: { IE: 'lte IE 9', '!IE': false } }
+
+rtl_styles:
+  version: 1.0
+  css:
+    theme:
+      stylesheets/css/style-rtl.css: {}
+      stylesheets/css/fix-ie-rtl.css: { browsers: { IE: 'lte IE 9', '!IE': false } }
+
+global-scripts:
+  version: 1.0
+  js:
+    javascripts/scripts.js: {}
+  dependencies:
+  - core/jquery

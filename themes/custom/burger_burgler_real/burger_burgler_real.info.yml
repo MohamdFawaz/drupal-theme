@@ -1,0 +1,9 @@
+#burger_burgler_real.info.yml
+name: Real Burger Burgler Theme
+type: theme
+description: 'Our new theme'
+core: 8.x
+
+libraries:
+  - burger_burgler_real/global-styling
+  - burger_burgler_real/global-script
