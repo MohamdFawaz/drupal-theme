@@ -780,3 +780,4 @@ $databases['default']['default'] = array (
 );
 $config_directories['sync'] = 'sites/default/files/config_M48Uh9X7wY08sLB__bYAQLe1_Q829-3TMKyNNrbMzH3aIFCpojiYIt_cVdA5g3JZlOn9VOb5Vw/sync';
 $config['system.logging']['error_level'] = 'verbose';
+$config['dropzonejs.settings']['tmp_upload_scheme'] = 'public';

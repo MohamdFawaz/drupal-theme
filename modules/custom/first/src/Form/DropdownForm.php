@@ -112,6 +112,8 @@ class DropdownForm extends FormBase {
       '#dropzone_description' => 'Drag and drop file',
       '#max_filesize' => '1M',
       '#extensions' => 'jpg png pdf',
+      '#attributes' => array('class' => array('form-control')),
+
     ];
 
     $form['submit'] = [
@@ -186,10 +188,13 @@ class DropdownForm extends FormBase {
 
     ];
     /* Fetch the array of the file stored temporarily in database */
-    $image = $form_state->getValues();
-    $image = $image['dropzonejs']['uploaded_files'][0];
+    $image = $form_state->getValue('dropzonejs')['uploaded_files'];
+    var_dump(time().'_'.$image[0]['filename']);
+    die();
+//    $image = $image['dropzonejs']['uploaded_files'][0];
 
     /* Load the object of the file by it's fid */
+
     $file = File::load( $image['dropzonejs']['uploaded_files'][0] );
 
     /* Set the status flag permanent of the file object */
@@ -202,7 +207,7 @@ class DropdownForm extends FormBase {
     die();
     $connection = \Drupal::database();
     if($newfile) {
-      $some_location = '/some/location/at/server';
+      $some_location = '/sites/img';
       $des = $some_location . '-' . time() . $newfile->filename; // Define the new location and add the time stamp to file name.
 
       $result = file_copy($newfile, $des, FILE_EXISTS_REPLACE);
