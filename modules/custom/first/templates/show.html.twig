@@ -23,7 +23,7 @@
         <td>{{ user.surname }}</td>
         <td>{{ user.age }}</td>
         <td>{{ user.role|capitalize }}</td>
-        <td>{{ user.image }}</td>
+        <td><a href="{{ file_url(user.image) }}" target="_blank"><img src="{{ base_path }}{{ file_url(user.image) }}" alt="{{ user.image }}" style="max-width: 100px"/></a></td>
     </tr>
     {% endfor %}
     </tbody>

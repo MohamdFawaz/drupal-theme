@@ -29,7 +29,19 @@ class DropzoneJsTestForm extends FormBase {
       '#max_filesize' => '1M',
       '#extensions' => 'jpg png',
     ];
+    /*
+    $form['image'] = [
+      '#title' => $this->t('Documents'),
+      '#type' => 'dropzonejs',
+      '#required' => TRUE,
+      '#dropzone_description' => 'Drag and drop file',
+      '#max_filesize' => '1M',
+      '#extensions' => 'jpg png pdf',
+      '#max_files' => 1,
+      '#attributes' => array('class' => array('form-control')),
 
+    ];
+    */
     return $form;
   }
 
@@ -37,6 +49,12 @@ class DropzoneJsTestForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    /*
+     *
+     * @returns Array of images
+     */
+    $image = $form_state->getValue('image')['uploaded_files'];
+
   }
 
 }

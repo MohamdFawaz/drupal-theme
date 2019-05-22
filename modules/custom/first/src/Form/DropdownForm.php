@@ -17,8 +17,8 @@ use Drupal\Core\Ajax\CssCommand;
 use Drupal\dropzonejs\DropzoneJsUploadSave;
 use Drupal\dropzonejs_eb_widget\Plugin\EntityBrowser\Widget\DropzoneJsEbWidget;
 use Drupal\dropzonejs_test\Form\DropzoneJsTestForm;
-use Drupal\file\Entity\File;
 use Drupal\Tests\dropzonejs\Kernel\DropzoneJsUploadControllerTest;
+use Drupal\Core\File;
 
 
 class DropdownForm extends FormBase {
@@ -112,7 +112,7 @@ class DropdownForm extends FormBase {
       '#dropzone_description' => 'Drag and drop file',
       '#max_filesize' => '1M',
       '#extensions' => 'jpg png pdf',
-      '#attributes' => array('class' => array('form-control')),
+      '#max_files' => 1,
 
     ];
 
@@ -180,45 +180,20 @@ class DropdownForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    $image = $form_state->getValue('dropzonejs')['uploaded_files'];
+    $absolute_path = \Drupal::service('file_system');
+
     $values = [
       'name' => $form_state->getValue('name'),
       'surname' => $form_state->getValue('surname'),
       'age' => $form_state->getValue('age'),
       'role' => $form_state->getValue('role'),
-
+      'image' => $image[0]['path'],
     ];
     /* Fetch the array of the file stored temporarily in database */
-    $image = $form_state->getValue('dropzonejs')['uploaded_files'];
-    var_dump(time().'_'.$image[0]['filename']);
-    die();
-//    $image = $image['dropzonejs']['uploaded_files'][0];
 
-    /* Load the object of the file by it's fid */
 
-    $file = File::load( $image['dropzonejs']['uploaded_files'][0] );
-
-    /* Set the status flag permanent of the file object */
-    $file->setPermanent();
-
-    /* Save the file in database */
-    $file->save();
-
-    kint($form_state->getValues());
-    die();
     $connection = \Drupal::database();
-    if($newfile) {
-      $some_location = '/sites/img';
-      $des = $some_location . '-' . time() . $newfile->filename; // Define the new location and add the time stamp to file name.
-
-      $result = file_copy($newfile, $des, FILE_EXISTS_REPLACE);
-      if ($result) {
-        // Succeed.
-      }
-      else {
-        // Fail.
-      }
-
-    }
     $query = $connection->insert('cities')->fields($values)->execute();
     if ($query){
       return $query;

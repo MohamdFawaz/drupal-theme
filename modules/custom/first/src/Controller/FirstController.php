@@ -65,7 +65,7 @@ class FirstController extends ControllerBase {
       $myform = $this->formBuilder->getForm('Drupal\first\Form\DropdownForm');
 //      $myform = new DropzoneJsTestForm();
       $query = $this->connection->select('cities');
-      $query->fields('cities', ['name', 'pid', 'surname','age','role']);
+      $query->fields('cities', ['name', 'pid', 'surname','age','role','image']);
       $users = $query->execute()->fetchAll();
       $test = '';
         return [
